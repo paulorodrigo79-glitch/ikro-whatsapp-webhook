@@ -15,7 +15,16 @@ def verificar_webhook():
 @app.route("/webhook", methods=["POST"])
 def receber_webhook():
     dados = request.get_json(silent=True) or {}
-    print(dados, flush=True)
+    try:
+    value = dados["entry"][0]["changes"][0]["value"]
+    mensagem = value["messages"][0]
+    numero = mensagem["from"]
+    texto = mensagem.get("text", {}).get("body", "")
+
+    print(f"NUMERO: {numero}", flush=True)
+    print(f"MENSAGEM: {texto}", flush=True)
+except (KeyError, IndexError, TypeError):
+    print("Evento recebido sem mensagem de texto.", flush=True)
     return "EVENT_RECEIVED", 200
 
 

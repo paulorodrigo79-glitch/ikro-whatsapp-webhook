@@ -26,8 +26,8 @@ def receber_webhook():
         resposta = f"Recebi sua mensagem: {texto}"
         print(resposta, flush=True)
 except (KeyError, IndexError, TypeError):
-    print("Evento recebido sem mensagem de texto.", flush=True)
-    return "EVENT_RECEIVED", 200
+        print("Evento recebido sem mensagem de texto.", flush=True)
+        return "EVENT_RECEIVED", 200
 
 
 if __name__ == "__main__":

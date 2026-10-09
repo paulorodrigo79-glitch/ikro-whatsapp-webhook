@@ -21,10 +21,10 @@ def receber_webhook():
         numero = mensagem["from"]
         texto = mensagem.get("text", {}).get("body", "")
 
-    print(f"NUMERO: {numero}", flush=True)
-    print(f"MENSAGEM: {texto}", flush=True)
-    resposta = f"Recebi sua mensagem: {texto}"
-    print(resposta, flush=True)
+        print(f"NUMERO: {numero}", flush=True)
+        print(f"MENSAGEM: {texto}", flush=True)
+        resposta = f"Recebi sua mensagem: {texto}"
+        print(resposta, flush=True)
 except (KeyError, IndexError, TypeError):
     print("Evento recebido sem mensagem de texto.", flush=True)
     return "EVENT_RECEIVED", 200

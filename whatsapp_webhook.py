@@ -16,7 +16,7 @@ def verificar_webhook():
 def receber_webhook():
     dados = request.get_json(silent=True) or {}
     try:
-    value = dados["entry"][0]["changes"][0]["value"]
+        value = dados["entry"][0]["changes"][0]["value"]
     mensagem = value["messages"][0]
     numero = mensagem["from"]
     texto = mensagem.get("text", {}).get("body", "")

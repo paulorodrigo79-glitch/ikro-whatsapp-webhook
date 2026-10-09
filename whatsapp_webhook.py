@@ -12,6 +12,12 @@ def verificar_webhook():
 
     return "Token inválido", 403
 
+@app.route("/webhook", methods=["POST"])
+def receber_webhook():
+    dados = request.get_json(silent=True) or {}
+    print(dados, flush=True)
+    return "EVENT_RECEIVED", 200
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0",port=5000)
